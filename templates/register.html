@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block register %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<div class="container" style="background-image:url(/static/images/backgroundlogin.jpg);  background-size: cover;width: 100%;font-family: 'Numans', sans-serif;">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign Up</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+				<form action="{% url 'signup'%}" method='POST'>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" name='email' placeholder="Enter Email">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" name='password1' placeholder="Enter Password">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" name='password2' placeholder="Enter Confirm Password">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="text" class="form-control" name='first_name' placeholder="Enter First Name">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="text" class="form-control" name='last_name' placeholder="Enter Last Name">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="text" class="form-control" name='contact' placeholder="Enter Mobile Number">
+					</div>
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+                        <input type="text" id="address" class="form-control" name='address' placeholder="Enter Address">
+                    
+                    </div>
+                
+                    <div style='color:white;'>
+                   
+						
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="gender" value="male">Male
+                          
+                          
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" value="female">Female
+                        </label>
+                      </div>
+                      <div class="form-check-inline disabled">
+                        <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" value="other">Other 
+                        </label>
+                      </div>
+                  
+            </div>
+					<div class="row align-items-center remember">
+						<input type="checkbox">Remember Me
+					</div>
+                    {%csrf_token%}
+					<div class="form-group">
+						<input type="submit" value="Sign Up" class="btn float-right login_btn btn btn-secondary">
+					</div>
+				</form>
+			</div>
+            <p style='color:green'>{{success}}</p><p style='color:green'>{{error}}</p>
+			<div class="card-footer" >
+				<div class="d-flex justify-content-center links" >
+					Don't have an account?<a href="{%url 'login'%}">Sign In</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock register %}
