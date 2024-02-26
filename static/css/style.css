@@ -6220,7 +6220,8 @@ button.bg-dark:focus {
   margin-left: 0.5rem !important; }
 
 .m-3 {
-  margin: 1rem !important; }
+  margin: 1rem !important;
+ }
 
 .mt-3,
 .my-3 {
@@ -6270,6 +6271,7 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
+ 
   margin-bottom: 3rem !important; }
 
 .ml-5,

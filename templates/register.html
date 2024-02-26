@@ -81,19 +81,18 @@
                         <label class="form-check-label">
                         <input type="radio" class="form-check-input" name="gender" value="other">Other 
                         </label>
-                      </div>
-                  
+                      </div>    
             </div>
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>
                     {%csrf_token%}
 					<div class="form-group">
-						<input type="submit" value="Sign Up" class="btn float-right login_btn btn btn-secondary">
+						<input type="submit" value="Sign Up" class="btn float-right login_btn btn btn-warning">
 					</div>
 				</form>
 			</div>
-            <p style='color:green'>{{success}}</p><p style='color:green'>{{error}}</p>
+            <p style='color:green'>{{success}}</p><p style='color:red'>{{error}}</p>
 			<div class="card-footer" >
 				<div class="d-flex justify-content-center links" >
 					Don't have an account?<a href="{%url 'login'%}">Sign In</a>

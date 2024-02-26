@@ -1,15 +1,18 @@
 from django.shortcuts import render,redirect
 from accounts.models import CustomUser
+from django.contrib.auth import authenticate,login as auth_login,logout
 from django.contrib import messages
 # Create your views here.
 def home(request):
     return render(request,'index.html')
 
-def menu(request):
-    return render(request,'menu.html')
+
 
 def register(request):
     return render(request,'register.html')
+
+def login(request):
+    return render(request,'login.html')
 
 def registered(request):
     if request.method=='POST':
@@ -31,5 +34,26 @@ def registered(request):
         return render(request,'register.html',{'success':'Account has been created successfully'})
     return render(request,'register.html')
 
-def login(request):
+def handlelogin(request):
+    if request.method=='POST':
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        if email and password:
+            user=authenticate(request,email=email,password=password)
+            print(user)
+            if user is not None:
+                auth_login(request, user)
+                messages.success(request,f"You are successfully login")
+                return redirect('home')
+            else:
+                return render(request,'login.html',{'error':'Invalid credentials'})
+        else:
+            return render(request, 'login.html',{"error":"Email and password are required."} )
     return render(request,'login.html')
+
+
+
+def handlelogout(request):
+    logout(request)
+    messages.success(request,'Logout Successfully')
+    return redirect('home')
